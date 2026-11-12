@@ -1,170 +1,167 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Heart } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Play, Quote } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Newsletter } from "@/components/site/Newsletter";
+import { NewsCard } from "@/components/site/NewsCard";
+import { Partners } from "@/components/site/Partners";
 import { ProjectCard } from "@/components/site/ProjectCard";
-import { news, pillars, projects, stats } from "@/lib/site-data";
-import hero from "@/assets/hero-hornbill.jpg";
+import { goals2035, highlightStats, images, news, ORG, pillars, projects, stats } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fondation Canopée — Protéger les terres sauvages" },
+      { title: "FEDEC — Conserver, Régénérer, Restaurer, Financer" },
       {
         name: "description",
         content:
-          "Protégez les forêts tropicales pour les espèces, le climat et les communautés. Découvrez nos projets urgents et triplez l’impact de votre don.",
+          "Fondation camerounaise reconnue d’utilité publique : la FEDEC finance les aires protégées, la restauration des forêts et une économie régénérative au service des communautés.",
       },
-      { property: "og:title", content: "Fondation Canopée — Protéger les terres sauvages" },
+      { property: "og:title", content: "FEDEC — Conserver, Régénérer, Restaurer, Financer" },
       {
         property: "og:description",
-        content: "Protégez les forêts tropicales pour les espèces, le climat et les communautés.",
+        content: "Pour une économie régénérative au service de la nature et des communautés du Cameroun. Plan stratégique 2026–2035.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: Home,
 });
 
-const words = ["les espèces", "le climat", "les communautés"];
-
-function Index() {
-  return (
-    <>
-      <Hero />
-      <Impact />
-      <Pillars />
-      <ProjectsCarousel />
-      <News />
-      <Newsletter />
-    </>
-  );
-}
+const words = ["Conserver", "Régénérer", "Restaurer", "Financer"];
 
 function Hero() {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2800);
+    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2600);
     return () => clearInterval(t);
   }, []);
-
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-forest-deep text-forest-foreground">
+    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-forest-deep text-forest-foreground">
       <img
-        src={hero}
-        alt="Calao rhinocéros perché dans la canopée de Bornéo"
+        src={images.hero}
+        alt="Éléphants de forêt dans une forêt camerounaise"
         width={1920}
         height={1088}
-        className="absolute inset-0 h-full w-full object-cover animate-slow-zoom"
+        className="absolute inset-0 h-full w-full object-cover object-[70%_center] animate-slow-zoom"
       />
       <div className="absolute inset-0 bg-hero-overlay" />
       <div className="absolute inset-0 bg-fade-bottom" />
-
-      <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-36 lg:px-8">
-        <p className="font-label text-lg font-medium tracking-wide text-forest-foreground/80">
-          Protéger les terres sauvages pour{" "}
-          <span key={i} className="inline-block font-display text-2xl italic text-ember animate-word-in">
-            {words[i]}
+      <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-44 sm:pb-20 lg:px-8 lg:pb-24">
+        <p className="eyebrow eyebrow-marker animate-rise">Plan stratégique 2026 – 2035</p>
+        <h1 className="mt-6 max-w-4xl text-[2.6rem] font-medium leading-[1.02] text-shadow-soft sm:text-6xl lg:text-7xl xl:text-8xl">
+          <span key={i} className="block text-ember animate-word-in">{words[i]}</span>
+          <span className="mt-2 block text-2xl leading-snug sm:text-4xl lg:text-5xl">
+            pour une économie régénérative au service de la nature et des communautés
           </span>
-        </p>
-
-        <p className="eyebrow eyebrow-marker mt-14 animate-rise">Triplez votre impact</p>
-        <h1 className="mt-6 max-w-2xl text-5xl font-medium leading-[1.04] text-shadow-soft animate-rise md:text-7xl">
-          Stopper l’expansion du palmier à huile au cœur de Bornéo
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-forest-foreground/85 animate-rise">
-          Jusqu’au 31 décembre, chaque euro donné est triplé par nos mécènes pour protéger 48 000 hectares de forêt primaire.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-4 animate-rise">
+        <div className="mt-10 flex flex-col gap-3 animate-rise sm:flex-row sm:flex-wrap sm:gap-4">
           <Button asChild variant="donate" size="xl">
-            <Link to="/don">
-              <Heart className="fill-current" /> Tripler mon don
-            </Link>
+            <Link to="/faire-un-don"><Heart className="fill-current" /> Faire un don</Link>
           </Button>
           <Button asChild variant="frame" size="xl">
-            <Link to="/projets">Projets urgents</Link>
+            <Link to="/plan-strategique">Découvrir notre plan <ArrowRight /></Link>
           </Button>
         </div>
       </div>
+    </section>
+  );
+}
+
+function StatsBand() {
+  return (
+    <section className="bg-forest-deep text-forest-foreground">
+      <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 sm:grid-cols-3 lg:grid-cols-5 lg:px-8">
+        {stats.map((s, idx) => (
+          <div key={s.label} className={`border-l-2 border-leaf pl-4 ${idx === 4 ? "col-span-2 sm:col-span-1" : ""}`}>
+            <dt className="sr-only">{s.label}</dt>
+            <dd className="font-display text-3xl font-medium sm:text-4xl">{s.value}</dd>
+            <dd className="mt-1 text-sm text-forest-foreground/70">{s.label}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }
 
 function Impact() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-end">
-        <div>
-          <p className="eyebrow text-forest">Notre impact</p>
-          <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">
-            Préserver les habitats essentiels partout sur la planète
-          </h2>
-        </div>
-        <div>
+    <section className="bg-background py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
+          <div>
+            <p className="eyebrow text-forest">Notre impact</p>
+            <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">
+              Plus de 20 ans au service des aires protégées du Cameroun
+            </h2>
+          </div>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Depuis 1998, nous montrons que protéger l’habitat est le moyen le plus efficace de sauver les espèces. Nous
-            travaillons avec des partenaires locaux pour sécuriser les forêts les plus précieuses.
+            Issue du Plan de Gestion Environnementale du Pipeline Tchad-Cameroun, la FEDEC gère des fonds de compensation
+            pour la biodiversité et accompagne les peuples autochtones vulnérables le long de l’axe Kribi – Bipindi – Lolodorf.
           </p>
-          <Button asChild variant="outline-forest" size="lg" className="mt-6">
-            <Link to="/impact">
-              Voir notre impact mondial <ArrowRight />
-            </Link>
-          </Button>
+        </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {highlightStats.map((h) => (
+            <div key={h.value} className="group relative aspect-[4/5] overflow-hidden bg-forest-deep text-forest-foreground sm:aspect-[16/10] md:aspect-[3/4]">
+              <img src={h.image} alt="" loading="lazy" width={800} height={1000} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-card-overlay" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <p className="font-display text-5xl font-medium text-ember lg:text-6xl">{h.value}</p>
+                <p className="mt-2 max-w-xs text-base">{h.label}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <p className="eyebrow mt-16 text-muted-foreground">Le saviez-vous ?</p>
-      <ul className="mt-5 grid gap-6 md:grid-cols-3">
-        {stats.map((s) => (
-          <li key={s.value} className="group relative aspect-[7/6] overflow-hidden bg-forest-deep text-forest-foreground shadow-card">
-            <img src={s.image} alt="" loading="lazy" width={800} height={700} className="absolute inset-0 h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-card-overlay" />
-            <div className="absolute inset-x-0 bottom-0 p-7">
-              <p className="font-display text-6xl font-medium text-ember">{s.value}</p>
-              <p className="mt-2 max-w-[16rem] text-forest-foreground/90">{s.label}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }
 
-function Pillars() {
+function PillarTabs() {
   const [active, setActive] = useState(0);
   const p = pillars[active] ?? pillars[0];
   return (
-    <section className="bg-forest text-forest-foreground">
-      <div className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
-        <div className="flex flex-wrap items-baseline gap-x-8 gap-y-4">
-          <h2 className="text-4xl font-medium md:text-5xl">Soutenez notre action pour</h2>
-          <div role="tablist" className="flex gap-6">
-            {pillars.map((pl, idx) => (
-              <button
-                key={pl.key}
-                role="tab"
-                aria-selected={idx === active}
-                onClick={() => setActive(idx)}
-                className={`border-b-2 pb-1 font-display text-3xl italic transition-colors md:text-4xl ${
-                  idx === active ? "border-ember text-ember" : "border-transparent text-forest-foreground/50 hover:text-forest-foreground"
-                }`}
-              >
-                {pl.tab}
-              </button>
-            ))}
-          </div>
+    <section className="bg-secondary py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <p className="eyebrow text-forest">Nos trois piliers stratégiques</p>
+        <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">
+          Agir pour{" "}
+          <span className="text-forest underline decoration-ember decoration-4 underline-offset-8">{p.tab}</span>
+        </h2>
+        <div className="mt-8 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none]" role="tablist">
+          {pillars.map((pl, idx) => (
+            <button
+              key={pl.key}
+              role="tab"
+              aria-selected={idx === active}
+              onClick={() => setActive(idx)}
+              className={`eyebrow shrink-0 border-2 px-4 py-3 text-xs transition-colors sm:px-5 sm:text-sm ${
+                idx === active ? "border-forest bg-forest text-forest-foreground" : "border-forest/25 text-forest hover:border-forest"
+              }`}
+            >
+              {pl.number} · {pl.short}
+            </button>
+          ))}
         </div>
-
-        <div key={p.key} className="mt-14 grid gap-12 md:grid-cols-2 md:items-center animate-rise">
-          <img src={p.image} alt={p.title} loading="lazy" width={800} height={960} className="aspect-[5/6] w-full object-cover shadow-card" />
+        <div key={p.key} className="mt-10 grid gap-10 animate-rise lg:grid-cols-2 lg:items-center">
+          <div className="relative aspect-[4/3] overflow-hidden bg-forest-deep">
+            <img src={p.image} alt="" loading="lazy" width={1000} height={750} className="h-full w-full object-cover" />
+            <span className="absolute left-0 top-0 bg-ember px-4 py-2 font-display text-2xl text-ember-foreground">{p.number}</span>
+          </div>
           <div>
-            <p className="eyebrow text-leaf">Impact mondial</p>
-            <h3 className="mt-3 text-4xl font-medium leading-tight">{p.title}</h3>
-            <p className="mt-6 text-lg leading-relaxed text-forest-foreground/80">{p.text}</p>
-            <Button asChild variant="frame" size="lg" className="mt-8">
-              <Link to="/a-propos">En savoir plus</Link>
+            <h3 className="text-2xl font-medium leading-snug md:text-3xl">{p.title}</h3>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{p.text}</p>
+            <ul className="mt-6 space-y-3">
+              {p.actions.map((a) => (
+                <li key={a} className="flex gap-3">
+                  <span className="mt-2 h-2 w-2 shrink-0 bg-leaf" />
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+            <Button asChild variant="forest" size="lg" className="mt-8">
+              <Link to="/plan-strategique" hash={p.key}>Voir les objectifs 2035 <ArrowRight /></Link>
             </Button>
           </div>
         </div>
@@ -173,55 +170,132 @@ function Pillars() {
   );
 }
 
-function ProjectsCarousel() {
-  const ref = useRef<HTMLDivElement>(null);
-  const scroll = (dir: 1 | -1) => ref.current?.scrollBy({ left: dir * ref.current.clientWidth * 0.8, behavior: "smooth" });
+function Goals() {
   return (
-    <section className="bg-forest-deep py-24 text-forest-foreground">
-      <div className="mx-auto flex max-w-7xl items-end justify-between gap-6 px-5 lg:px-8">
-        <div>
-          <p className="eyebrow text-ember">Sur le terrain</p>
-          <h2 className="mt-3 text-4xl font-medium md:text-5xl">Nos projets de conservation</h2>
+    <section className="relative overflow-hidden bg-forest text-forest-foreground">
+      <img src={images.mangrove} alt="" loading="lazy" width={1200} height={800} className="absolute inset-0 h-full w-full object-cover opacity-20" />
+      <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="max-w-2xl">
+          <p className="eyebrow text-leaf">Horizon 2035</p>
+          <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">Des objectifs à la hauteur des enjeux</h2>
         </div>
-        <div className="flex gap-2">
-          <button onClick={() => scroll(-1)} aria-label="Projets précédents" className="grid h-12 w-12 place-items-center border-2 border-forest-foreground/30 hover:border-ember hover:text-ember">
-            <ArrowLeft className="h-5 w-5" />
-          </button>
-          <button onClick={() => scroll(1)} aria-label="Projets suivants" className="grid h-12 w-12 place-items-center border-2 border-forest-foreground/30 hover:border-ember hover:text-ember">
-            <ArrowRight className="h-5 w-5" />
-          </button>
-        </div>
-      </div>
-      <div ref={ref} className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 lg:px-[max(2rem,calc((100vw-80rem)/2+2rem))]">
-        {projects.map((p) => (
-          <div key={p.slug} className="w-[82vw] shrink-0 snap-start sm:w-[22rem]">
-            <ProjectCard project={p} />
-          </div>
-        ))}
+        <dl className="mt-12 grid grid-cols-2 gap-px bg-forest-foreground/15 md:grid-cols-3">
+          {goals2035.map((g) => (
+            <div key={g.label} className="bg-forest p-5 sm:p-8">
+              <dt className="font-display text-3xl font-medium text-ember sm:text-5xl">{g.value}</dt>
+              <dd className="mt-2 text-sm text-forest-foreground/80 sm:text-base">{g.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
 }
 
-function News() {
+function ProjectsCarousel() {
+  const ref = useRef<HTMLDivElement>(null);
+  const scroll = (dir: number) => {
+    const el = ref.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+  };
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
-      <p className="eyebrow text-forest">Actualités</p>
-      <h2 className="mt-3 text-4xl font-medium md:text-5xl">Nouvelles de la forêt</h2>
-      <div className="mt-12 grid gap-8 md:grid-cols-3">
-        {news.map((n) => (
-          <article key={n.title} className="group">
-            <div className="overflow-hidden">
-              <img src={n.image} alt="" loading="lazy" width={800} height={572} className="aspect-[7/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+    <section className="bg-background py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="eyebrow text-forest">Nos projets</p>
+            <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">Sur le terrain, avec les communautés</h2>
+          </div>
+          <div className="flex gap-2">
+            <button onClick={() => scroll(-1)} aria-label="Projets précédents" className="grid h-12 w-12 place-items-center border-2 border-forest text-forest hover:bg-forest hover:text-forest-foreground">
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+            <button onClick={() => scroll(1)} aria-label="Projets suivants" className="grid h-12 w-12 place-items-center border-2 border-forest text-forest hover:bg-forest hover:text-forest-foreground">
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+        <div ref={ref} className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] lg:mx-0 lg:px-0">
+          {projects.map((p) => (
+            <div key={p.slug} className="w-[82%] shrink-0 snap-start sm:w-[45%] lg:w-[31.5%]">
+              <ProjectCard project={p} />
             </div>
-            <div className="mt-5 flex items-center gap-3">
-              <span className="eyebrow text-xs text-ember-foreground bg-ember px-2 py-0.5">{n.tag}</span>
-              <span className="eyebrow text-xs text-muted-foreground">{n.date}</span>
-            </div>
-            <h3 className="mt-3 text-2xl font-medium leading-snug group-hover:text-forest">{n.title}</h3>
-          </article>
-        ))}
+          ))}
+        </div>
+        <Button asChild variant="outline-forest" size="lg" className="mt-8">
+          <Link to="/projets">Tous nos projets <ArrowRight /></Link>
+        </Button>
       </div>
     </section>
+  );
+}
+
+function Director() {
+  return (
+    <section className="bg-secondary">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-[2fr_3fr] md:items-center lg:gap-16 lg:px-8 lg:py-24">
+        <div className="relative mx-auto w-full max-w-sm md:max-w-none">
+          <img src={images.dg} alt="Anne Virginie EDOA, Directeur Exécutif de la FEDEC" loading="lazy" width={700} height={794} className="aspect-[7/8] w-full object-cover shadow-card" />
+          <span className="absolute -bottom-4 -right-4 hidden h-24 w-24 bg-ember sm:block" aria-hidden />
+        </div>
+        <div>
+          <Quote className="h-10 w-10 text-ember" />
+          <blockquote className="mt-4 font-display text-2xl leading-snug sm:text-3xl">
+            La FEDEC est une organisation en perpétuelle transformation. Après plus de 19 années d’engagement sur le terrain,
+            nous aspirons maintenant à partager notre expertise en gestion et suivi des fonds de compensation.
+          </blockquote>
+          <p className="mt-6 font-semibold">Anne Virginie EDOA</p>
+          <p className="eyebrow text-sm text-muted-foreground">Directeur Exécutif</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild variant="forest" size="lg">
+              <Link to="/la-fedec">Qui sommes-nous <ArrowRight /></Link>
+            </Button>
+            <Button asChild variant="outline-forest" size="lg">
+              <a href={ORG.video} target="_blank" rel="noreferrer"><Play className="fill-current" /> Voir la vidéo</a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LatestNews() {
+  return (
+    <section className="bg-background py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="eyebrow text-forest">Actu FEDEC</p>
+            <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">Dernières nouvelles</h2>
+          </div>
+          <Button asChild variant="outline-forest" size="lg">
+            <Link to="/actualites">Toutes les actualités <ArrowRight /></Link>
+          </Button>
+        </div>
+        <div className="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {news.slice(0, 3).map((n) => (
+            <NewsCard key={n.title} item={n} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Home() {
+  return (
+    <>
+      <Hero />
+      <StatsBand />
+      <Impact />
+      <PillarTabs />
+      <Goals />
+      <ProjectsCarousel />
+      <Director />
+      <LatestNews />
+      <Partners />
+      <Newsletter />
+    </>
   );
 }

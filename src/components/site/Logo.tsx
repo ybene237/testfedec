@@ -1,18 +1,18 @@
 import { Link } from "@tanstack/react-router";
-import { Leaf } from "lucide-react";
+import { images } from "@/lib/site-data";
 
-export function Logo() {
+export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-3 text-forest-foreground" aria-label="Fondation Canopée — accueil">
-      <span className="grid h-11 w-11 place-items-center bg-ember text-ember-foreground">
-        <Leaf className="h-6 w-6" strokeWidth={2.2} />
+    <Link to="/" className="flex items-center gap-3 text-forest-foreground" aria-label="FEDEC — accueil">
+      <span className="grid shrink-0 place-items-center bg-card p-1.5">
+        <img src={images.logo} alt="Logo FEDEC" width={120} height={154} className="h-10 w-auto sm:h-12" />
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-2xl font-semibold tracking-wide">CANOPÉE</span>
-        <span className="font-label text-[0.65rem] uppercase tracking-[0.42em] text-forest-muted">
-          Fondation
+      {!compact && (
+        <span className="hidden flex-col leading-tight sm:flex">
+          <span className="font-display text-sm font-semibold tracking-wide md:text-base">Fondation pour l’Environnement</span>
+          <span className="font-display text-sm font-semibold tracking-wide md:text-base">et le Développement au Cameroun</span>
         </span>
-      </span>
+      )}
     </Link>
   );
 }

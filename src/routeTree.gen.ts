@@ -10,29 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AProposRouteImport } from './routes/a-propos'
-import { Route as DonRouteImport } from './routes/don'
-import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as ProjetsRouteImport } from './routes/projets'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AProposRoute = AProposRouteImport.update({
-  id: '/a-propos',
-  path: '/a-propos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DonRoute = DonRouteImport.update({
-  id: '/don',
-  path: '/don',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImpactRoute = ImpactRouteImport.update({
-  id: '/impact',
-  path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjetsRoute = ProjetsRouteImport.update({
@@ -43,39 +25,27 @@ const ProjetsRoute = ProjetsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/a-propos': typeof AProposRoute
-  '/don': typeof DonRoute
-  '/impact': typeof ImpactRoute
   '/projets': typeof ProjetsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/a-propos': typeof AProposRoute
-  '/don': typeof DonRoute
-  '/impact': typeof ImpactRoute
   '/projets': typeof ProjetsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/a-propos': typeof AProposRoute
-  '/don': typeof DonRoute
-  '/impact': typeof ImpactRoute
   '/projets': typeof ProjetsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/a-propos' | '/don' | '/impact' | '/projets'
+  fullPaths: '/' | '/projets'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos' | '/don' | '/impact' | '/projets'
-  id: '__root__' | '/' | '/a-propos' | '/don' | '/impact' | '/projets'
+  to: '/' | '/projets'
+  id: '__root__' | '/' | '/projets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AProposRoute: typeof AProposRoute
-  DonRoute: typeof DonRoute
-  ImpactRoute: typeof ImpactRoute
   ProjetsRoute: typeof ProjetsRoute
 }
 
@@ -86,27 +56,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/a-propos': {
-      id: '/a-propos'
-      path: '/a-propos'
-      fullPath: '/a-propos'
-      preLoaderRoute: typeof AProposRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/don': {
-      id: '/don'
-      path: '/don'
-      fullPath: '/don'
-      preLoaderRoute: typeof DonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impact': {
-      id: '/impact'
-      path: '/impact'
-      fullPath: '/impact'
-      preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projets': {
@@ -121,9 +70,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AProposRoute: AProposRoute,
-  DonRoute: DonRoute,
-  ImpactRoute: ImpactRoute,
   ProjetsRoute: ProjetsRoute,
 }
 export const routeTree = rootRouteImport

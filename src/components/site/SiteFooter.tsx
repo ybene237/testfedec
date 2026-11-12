@@ -1,37 +1,60 @@
 import { Link } from "@tanstack/react-router";
+import { Facebook, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { ORG } from "@/lib/site-data";
 import { Logo } from "./Logo";
+import { navItems } from "./SiteHeader";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-forest-deep text-forest-foreground/80">
-      <div className="mx-auto grid max-w-7xl gap-12 border-t border-forest-foreground/10 px-5 py-16 md:grid-cols-4 lg:px-8">
-        <div className="md:col-span-2">
+    <footer className="bg-forest-deep pb-20 text-forest-foreground/80 lg:pb-0">
+      <div className="mx-auto grid max-w-7xl gap-12 border-t border-forest-foreground/10 px-5 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+        <div className="sm:col-span-2">
           <Logo />
-          <p className="mt-6 max-w-sm text-sm leading-relaxed">
-            Depuis 1998, nous protégeons les forêts tropicales les plus menacées de la planète, main dans la main avec les
-            communautés locales et nos partenaires sur le terrain.
+          <p className="mt-6 max-w-md text-sm leading-relaxed">
+            Mécanisme de financement environnemental reconnu d’utilité publique au Cameroun depuis 2001.{" "}
+            <span className="italic text-forest-foreground">{ORG.slogan}</span> : {ORG.tagline.toLowerCase()}.
           </p>
+          <div className="mt-6 flex gap-3">
+            {[
+              { href: ORG.social.facebook, label: "Facebook", Icon: Facebook },
+              { href: ORG.social.linkedin, label: "LinkedIn", Icon: Linkedin },
+              { href: ORG.social.x, label: "X (Twitter)", Icon: Twitter },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="grid h-10 w-10 place-items-center border border-forest-foreground/20 transition-colors hover:border-ember hover:text-ember"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
         <div>
           <p className="eyebrow text-ember">Explorer</p>
           <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/projets" className="hover:text-ember">Projets urgents</Link></li>
-            <li><Link to="/impact" className="hover:text-ember">Notre impact</Link></li>
-            <li><Link to="/a-propos" className="hover:text-ember">À propos</Link></li>
-            <li><Link to="/don" className="hover:text-ember">Faire un don</Link></li>
+            {navItems.map((n) => (
+              <li key={n.to}>
+                <Link to={n.to} className="hover:text-ember">{n.label}</Link>
+              </li>
+            ))}
+            <li><Link to="/faire-un-don" className="hover:text-ember">Faire un don</Link></li>
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-ember">Contact</p>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>contact@fondation-canopee.org</li>
-            <li>+237 6 00 00 00 00</li>
-            <li>Douala, Cameroun</li>
+          <p className="eyebrow text-ember">Nous joindre</p>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-leaf" /><a href={ORG.phoneHref} className="hover:text-ember">{ORG.phone}</a></li>
+            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-leaf" /><a href={`mailto:${ORG.email}`} className="hover:text-ember">{ORG.email}</a></li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-leaf" />{ORG.address}</li>
           </ul>
         </div>
       </div>
       <div className="border-t border-forest-foreground/10 px-5 py-6 text-center text-xs text-forest-foreground/50">
-        © {new Date().getFullYear()} Fondation Canopée. 100 % des dons affectés aux projets de terrain.
+        © {new Date().getFullYear()} FEDEC — {ORG.name}. Tous droits réservés.
       </div>
     </footer>
   );

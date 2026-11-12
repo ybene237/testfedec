@@ -19,19 +19,19 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 pt-32">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page introuvable</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          Cette page n’existe pas ou a été déplacée.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Retour à l’accueil
           </Link>
         </div>
       </div>
@@ -50,10 +50,10 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Cette page n’a pas pu se charger
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Une erreur est survenue. Réessayez ou revenez à l’accueil.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -63,13 +63,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Réessayer
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Retour à l’accueil
           </a>
         </div>
       </div>
@@ -85,16 +85,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fondation Canopée — Protéger les forêts tropicales" },
+      { title: "FEDEC — Fondation pour l’Environnement et le Développement au Cameroun" },
       {
         name: "description",
-        content: "Fondation Canopée protège les forêts tropicales, les espèces menacées et les communautés qui en dépendent.",
+        content: "La FEDEC finance la conservation des aires protégées, la restauration des forêts et une économie régénérative au service des communautés du Cameroun.",
       },
-      { name: "author", content: "Fondation Canopée" },
-      { property: "og:title", content: "Fondation Canopée — Protéger les forêts tropicales" },
+      { name: "author", content: "FEDEC" },
+      { property: "og:title", content: "FEDEC — Fondation pour l’Environnement et le Développement au Cameroun" },
       {
         property: "og:description",
-        content: "Fondation Canopée protège les forêts tropicales, les espèces menacées et les communautés qui en dépendent.",
+        content: "La FEDEC finance la conservation des aires protégées, la restauration des forêts et une économie régénérative au service des communautés du Cameroun.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
