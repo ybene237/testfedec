@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Site content (projects, stats, pillars, news) lives in `src/lib/site-data.ts`; pages read from it so copy changes happen in one place.
+- Shared site chrome (header, footer, floating donate tab, toaster) is mounted in `src/routes/__root.tsx`; pages render only their own sections.
+- Brand colors are semantic tokens (`forest`, `forest-deep`, `ember`, `leaf`) in `src/styles.css`, with button variants `donate`, `frame`, `forest`, `outline-forest`; never hardcode colors in components.
