@@ -120,7 +120,7 @@ function Impact() {
 
 function PillarTabs() {
   const [active, setActive] = useState(0);
-  const p = pillars[active] ?? pillars[0];
+  const p = (pillars[active] ?? pillars[0]) as (typeof pillars)[number];
   return (
     <section className="bg-secondary py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
