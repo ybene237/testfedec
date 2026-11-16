@@ -10,11 +10,41 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActualitesRouteImport } from './routes/actualites'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaireUnDonRouteImport } from './routes/faire-un-don'
+import { Route as LaFedecRouteImport } from './routes/la-fedec'
+import { Route as PlanStrategiqueRouteImport } from './routes/plan-strategique'
 import { Route as ProjetsRouteImport } from './routes/projets'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActualitesRoute = ActualitesRouteImport.update({
+  id: '/actualites',
+  path: '/actualites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaireUnDonRoute = FaireUnDonRouteImport.update({
+  id: '/faire-un-don',
+  path: '/faire-un-don',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaFedecRoute = LaFedecRouteImport.update({
+  id: '/la-fedec',
+  path: '/la-fedec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanStrategiqueRoute = PlanStrategiqueRouteImport.update({
+  id: '/plan-strategique',
+  path: '/plan-strategique',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjetsRoute = ProjetsRouteImport.update({
@@ -25,27 +55,69 @@ const ProjetsRoute = ProjetsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/actualites': typeof ActualitesRoute
+  '/contact': typeof ContactRoute
+  '/faire-un-don': typeof FaireUnDonRoute
+  '/la-fedec': typeof LaFedecRoute
+  '/plan-strategique': typeof PlanStrategiqueRoute
   '/projets': typeof ProjetsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/actualites': typeof ActualitesRoute
+  '/contact': typeof ContactRoute
+  '/faire-un-don': typeof FaireUnDonRoute
+  '/la-fedec': typeof LaFedecRoute
+  '/plan-strategique': typeof PlanStrategiqueRoute
   '/projets': typeof ProjetsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/actualites': typeof ActualitesRoute
+  '/contact': typeof ContactRoute
+  '/faire-un-don': typeof FaireUnDonRoute
+  '/la-fedec': typeof LaFedecRoute
+  '/plan-strategique': typeof PlanStrategiqueRoute
   '/projets': typeof ProjetsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projets'
+  fullPaths:
+    | '/'
+    | '/actualites'
+    | '/contact'
+    | '/faire-un-don'
+    | '/la-fedec'
+    | '/plan-strategique'
+    | '/projets'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projets'
-  id: '__root__' | '/' | '/projets'
+  to:
+    | '/'
+    | '/actualites'
+    | '/contact'
+    | '/faire-un-don'
+    | '/la-fedec'
+    | '/plan-strategique'
+    | '/projets'
+  id:
+    | '__root__'
+    | '/'
+    | '/actualites'
+    | '/contact'
+    | '/faire-un-don'
+    | '/la-fedec'
+    | '/plan-strategique'
+    | '/projets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActualitesRoute: typeof ActualitesRoute
+  ContactRoute: typeof ContactRoute
+  FaireUnDonRoute: typeof FaireUnDonRoute
+  LaFedecRoute: typeof LaFedecRoute
+  PlanStrategiqueRoute: typeof PlanStrategiqueRoute
   ProjetsRoute: typeof ProjetsRoute
 }
 
@@ -56,6 +128,41 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/actualites': {
+      id: '/actualites'
+      path: '/actualites'
+      fullPath: '/actualites'
+      preLoaderRoute: typeof ActualitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faire-un-don': {
+      id: '/faire-un-don'
+      path: '/faire-un-don'
+      fullPath: '/faire-un-don'
+      preLoaderRoute: typeof FaireUnDonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/la-fedec': {
+      id: '/la-fedec'
+      path: '/la-fedec'
+      fullPath: '/la-fedec'
+      preLoaderRoute: typeof LaFedecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plan-strategique': {
+      id: '/plan-strategique'
+      path: '/plan-strategique'
+      fullPath: '/plan-strategique'
+      preLoaderRoute: typeof PlanStrategiqueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projets': {
@@ -70,6 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActualitesRoute: ActualitesRoute,
+  ContactRoute: ContactRoute,
+  FaireUnDonRoute: FaireUnDonRoute,
+  LaFedecRoute: LaFedecRoute,
+  PlanStrategiqueRoute: PlanStrategiqueRoute,
   ProjetsRoute: ProjetsRoute,
 }
 export const routeTree = rootRouteImport
