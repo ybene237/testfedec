@@ -8,7 +8,7 @@ export function FloatingDonate() {
     <>
       <Link
         to="/faire-un-don"
-        className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 bg-ember px-3 py-5 text-ember-foreground shadow-ember transition-transform hover:-translate-x-1 lg:flex"
+        className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 bg-ember px-3 py-5 text-ember-foreground shadow-ember transition hover:-translate-x-1 hover:bg-ember-hover lg:flex"
       >
         <span className="eyebrow rotate-180 [writing-mode:vertical-rl]">Faire un don</span>
         <Heart className="h-4 w-4 fill-current" />
@@ -16,7 +16,7 @@ export function FloatingDonate() {
       <Link
         to="/faire-un-don"
         aria-label="Faire un don"
-        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full bg-ember px-5 py-3 text-ember-foreground shadow-ember lg:hidden"
+        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full bg-ember px-5 py-3 text-ember-foreground shadow-ember transition-colors hover:bg-ember-hover lg:hidden"
       >
         <Heart className="h-4 w-4 fill-current" />
         <span className="eyebrow text-xs">Don</span>

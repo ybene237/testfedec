@@ -9,7 +9,7 @@ export function PageHero({ eyebrow, title, image, children }: { eyebrow: string;
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-14 pt-40 lg:px-8 lg:pb-16">
         <p className="eyebrow eyebrow-marker animate-rise">{eyebrow}</p>
         <h1 className="mt-6 max-w-3xl text-4xl font-medium leading-[1.05] text-shadow-soft animate-rise sm:text-5xl md:text-6xl">{title}</h1>
-        {children && <div className="mt-6 max-w-2xl text-base text-forest-foreground/85 animate-rise sm:text-lg">{children}</div>}
+        {children && <div className="mt-6 max-w-2xl text-base text-forest-foreground/85 animate-rise">{children}</div>}
       </div>
     </section>
   );

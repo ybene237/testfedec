@@ -33,7 +33,7 @@ function ContactPage() {
       </PageHero>
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[2fr_3fr] lg:px-8 lg:py-24">
         <div>
-          <p className="eyebrow text-forest">Nos coordonnées</p>
+          <p className="eyebrow text-leaf">Nos coordonnées</p>
           <h2 className="mt-3 text-3xl font-medium md:text-4xl">Siège de la FEDEC</h2>
           <ul className="mt-8 space-y-6">
             <li className="flex gap-4">
@@ -42,11 +42,11 @@ function ContactPage() {
             </li>
             <li className="flex gap-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center bg-forest text-forest-foreground"><Phone className="h-5 w-5" /></span>
-              <div><p className="eyebrow text-xs text-muted-foreground">Téléphone</p><a href={ORG.phoneHref} className="mt-1 block hover:text-forest">{ORG.phone}</a></div>
+              <div><p className="eyebrow text-xs text-muted-foreground">Téléphone</p><a href={ORG.phoneHref} className="mt-1 block hover:text-ember">{ORG.phone}</a></div>
             </li>
             <li className="flex gap-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center bg-forest text-forest-foreground"><Mail className="h-5 w-5" /></span>
-              <div><p className="eyebrow text-xs text-muted-foreground">E-mail</p><a href={`mailto:${ORG.email}`} className="mt-1 block break-all hover:text-forest">{ORG.email}</a></div>
+              <div><p className="eyebrow text-xs text-muted-foreground">E-mail</p><a href={`mailto:${ORG.email}`} className="mt-1 block break-all hover:text-ember">{ORG.email}</a></div>
             </li>
           </ul>
           <div className="mt-8 flex gap-3">

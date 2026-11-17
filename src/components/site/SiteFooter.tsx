@@ -26,7 +26,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="grid h-10 w-10 place-items-center border border-forest-foreground/20 transition-colors hover:border-ember hover:text-ember"
+                className="grid h-10 w-10 place-items-center border border-forest-foreground/20 transition-colors hover:border-ember hover:bg-ember hover:text-ember-foreground"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -34,22 +34,22 @@ export function SiteFooter() {
           </div>
         </div>
         <div>
-          <p className="eyebrow text-ember">Explorer</p>
+          <p className="eyebrow text-leaf-light">Explorer</p>
           <ul className="mt-4 space-y-2 text-sm">
             {navItems.map((n) => (
               <li key={n.to}>
-                <Link to={n.to} className="hover:text-ember">{n.label}</Link>
+                <Link to={n.to} className="hover:text-forest-foreground hover:underline underline-offset-4">{n.label}</Link>
               </li>
             ))}
-            <li><Link to="/faire-un-don" className="hover:text-ember">Faire un don</Link></li>
+            <li><Link to="/faire-un-don" className="hover:text-forest-foreground hover:underline underline-offset-4">Faire un don</Link></li>
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-ember">Nous joindre</p>
+          <p className="eyebrow text-leaf-light">Nous joindre</p>
           <ul className="mt-4 space-y-3 text-sm">
-            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-leaf" /><a href={ORG.phoneHref} className="hover:text-ember">{ORG.phone}</a></li>
-            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-leaf" /><a href={`mailto:${ORG.email}`} className="hover:text-ember">{ORG.email}</a></li>
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-leaf" />{ORG.address}</li>
+            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-leaf-light" /><a href={ORG.phoneHref} className="hover:text-forest-foreground hover:underline underline-offset-4">{ORG.phone}</a></li>
+            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-leaf-light" /><a href={`mailto:${ORG.email}`} className="hover:text-forest-foreground hover:underline underline-offset-4">{ORG.email}</a></li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-leaf-light" />{ORG.address}</li>
           </ul>
         </div>
       </div>

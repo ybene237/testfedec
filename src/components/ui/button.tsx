@@ -17,9 +17,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         donate:
-          "rounded-none bg-ember text-ember-foreground font-label font-semibold uppercase tracking-[0.14em] hover:brightness-105 shadow-ember",
+          "rounded-none bg-ember text-ember-foreground font-label font-semibold uppercase tracking-[0.14em] hover:bg-ember-hover shadow-ember",
         frame:
-          "rounded-none border-2 border-ember bg-transparent text-forest-foreground font-label font-semibold uppercase tracking-[0.14em] hover:bg-ember hover:text-ember-foreground",
+          "rounded-none border-2 border-ember bg-transparent text-forest-foreground font-label font-semibold uppercase tracking-[0.14em] hover:border-ember-hover hover:bg-ember-hover hover:text-ember-foreground",
         forest:
           "rounded-none bg-forest text-forest-foreground font-label font-semibold uppercase tracking-[0.14em] hover:bg-forest-deep",
         "outline-forest":

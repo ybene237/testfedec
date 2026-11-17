@@ -27,7 +27,7 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50">
       <Link
         to="/actualites"
-        className="flex items-center justify-center gap-2 bg-ember px-4 py-2 text-center text-ember-foreground transition-colors hover:brightness-105"
+        className="flex items-center justify-center gap-2 bg-ember px-4 py-2 text-center text-ember-foreground transition-colors hover:bg-ember-hover"
       >
         <Megaphone className="hidden h-4 w-4 shrink-0 sm:block" />
         <span className="eyebrow truncate text-[0.7rem] sm:text-xs">
@@ -48,8 +48,9 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="font-label text-sm font-semibold uppercase tracking-[0.14em] text-forest-foreground/85 transition-colors hover:text-ember"
-                activeProps={{ className: "text-ember" }}
+                className="font-label text-sm font-semibold uppercase tracking-[0.14em] decoration-leaf-light decoration-2 underline-offset-8 transition-colors hover:text-forest-foreground hover:underline"
+                activeProps={{ className: "text-forest-foreground underline" }}
+                inactiveProps={{ className: "text-forest-foreground/85" }}
               >
                 {item.label}
               </Link>
@@ -71,7 +72,7 @@ export function SiteHeader() {
               <div className="mt-12 flex flex-col gap-5 px-2">
                 {navItems.map((item) => (
                   <SheetClose asChild key={item.to}>
-                    <Link to={item.to} className="font-display text-3xl hover:text-ember" activeProps={{ className: "text-ember" }}>
+                    <Link to={item.to} className="font-display text-3xl hover:text-leaf-light" activeProps={{ className: "text-leaf-light" }}>
                       {item.label}
                     </Link>
                   </SheetClose>

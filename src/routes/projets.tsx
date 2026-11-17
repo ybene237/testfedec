@@ -45,7 +45,7 @@ function ProjectsPage() {
       </section>
       <section className="bg-secondary">
         <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <p className="eyebrow text-forest">Zones d’intervention</p>
+          <p className="eyebrow text-leaf">Zones d’intervention</p>
           <h2 className="mt-3 text-3xl font-medium md:text-4xl">Les aires protégées appuyées par la FEDEC</h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {zones.map((z) => (

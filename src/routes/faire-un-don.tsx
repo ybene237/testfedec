@@ -45,15 +45,15 @@ function DonatePage() {
           <h1 className="mt-6 text-4xl font-medium leading-[1.05] text-shadow-soft sm:text-5xl md:text-6xl">
             Agissez pour la nature et les communautés du Cameroun
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-forest-foreground/85">
+          <p className="mt-6 max-w-xl text-base text-forest-foreground/85">
             Votre soutien finance directement nos actions de conservation, de restauration et d’appui aux peuples autochtones.
           </p>
           <ul className="mt-10 space-y-5">
             {uses.map(({ Icon, title, text }) => (
               <li key={title} className="flex gap-4">
-                <span className="grid h-12 w-12 shrink-0 place-items-center bg-ember text-ember-foreground"><Icon className="h-5 w-5" /></span>
+                <span className="grid h-12 w-12 shrink-0 place-items-center bg-leaf text-forest-foreground"><Icon className="h-5 w-5" /></span>
                 <div>
-                  <p className="eyebrow text-leaf">{title}</p>
+                  <p className="eyebrow text-leaf-light">{title}</p>
                   <p className="mt-1 text-forest-foreground/85">{text}</p>
                 </div>
               </li>

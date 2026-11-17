@@ -15,12 +15,12 @@ export function NewsCard({ item }: { item: NewsItem }) {
           />
         </div>
         <div className="mt-5 flex flex-wrap items-center gap-3">
-          <span className="eyebrow bg-ember px-2 py-0.5 text-xs text-ember-foreground">{item.tag}</span>
+          <span className="eyebrow bg-leaf px-2 py-0.5 text-xs text-forest-foreground">{item.tag}</span>
           <span className="eyebrow text-xs text-muted-foreground">{item.date}</span>
         </div>
-        <h3 className="mt-3 text-xl font-medium leading-snug group-hover:text-forest sm:text-2xl">{item.title}</h3>
+        <h3 className="mt-3 text-xl font-medium leading-snug group-hover:text-ember sm:text-2xl">{item.title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.excerpt}</p>
-        <span className="eyebrow mt-3 inline-block text-xs text-forest underline underline-offset-4">Lire l’article</span>
+        <span className="eyebrow mt-3 inline-block text-xs text-ember underline underline-offset-4">Lire l’article</span>
       </a>
     </article>
   );

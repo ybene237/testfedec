@@ -10,7 +10,7 @@ export function Newsletter() {
       <img src={canopy} alt="" loading="lazy" width={800} height={960} className="absolute inset-0 h-full w-full object-cover opacity-25" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-2 lg:items-center lg:px-8">
         <div>
-          <p className="eyebrow text-leaf">Newsletter FEDEC</p>
+          <p className="eyebrow text-leaf-light">Newsletter FEDEC</p>
           <h2 className="mt-3 text-4xl font-medium md:text-5xl">Restez informé·e de nos actions sur le terrain</h2>
         </div>
         <form

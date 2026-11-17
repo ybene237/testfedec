@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { FloatingDonate } from "@/components/site/FloatingDonate";
+import { Newsletter } from "@/components/site/Newsletter";
 import { Toaster } from "@/components/ui/sonner";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -143,6 +144,7 @@ function RootComponent() {
       <main>
         <Outlet />
       </main>
+      <Newsletter />
       <SiteFooter />
       <FloatingDonate />
       <Toaster position="bottom-center" />

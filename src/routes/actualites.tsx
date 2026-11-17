@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import { NewsCard } from "@/components/site/NewsCard";
-import { Newsletter } from "@/components/site/Newsletter";
 import { images, news } from "@/lib/site-data";
 
 export const Route = createFileRoute("/actualites")({
@@ -56,12 +55,12 @@ function NewsPage() {
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow bg-ember px-2 py-0.5 text-xs text-ember-foreground">{featured.tag}</span>
+                <span className="eyebrow bg-leaf px-2 py-0.5 text-xs text-forest-foreground">{featured.tag}</span>
                 <span className="eyebrow text-xs text-muted-foreground">{featured.date}</span>
               </div>
-              <h2 className="mt-4 text-3xl font-medium leading-tight group-hover:text-forest md:text-4xl">{featured.title}</h2>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{featured.excerpt}</p>
-              <span className="eyebrow mt-5 inline-block text-sm text-forest underline underline-offset-4">Lire l’article</span>
+              <h2 className="mt-4 text-3xl font-medium leading-tight group-hover:text-ember md:text-4xl">{featured.title}</h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{featured.excerpt}</p>
+              <span className="eyebrow mt-5 inline-block text-sm text-ember underline underline-offset-4">Lire l’article</span>
             </div>
           </a>
         )}
@@ -73,7 +72,6 @@ function NewsPage() {
           </div>
         )}
       </section>
-      <Newsletter />
     </>
   );
 }

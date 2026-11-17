@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Heart, Play, Quote } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Newsletter } from "@/components/site/Newsletter";
 import { NewsCard } from "@/components/site/NewsCard";
 import { Partners } from "@/components/site/Partners";
 import { ProjectCard } from "@/components/site/ProjectCard";
@@ -51,7 +50,7 @@ function Hero() {
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-44 sm:pb-20 lg:px-8 lg:pb-24">
         <p className="eyebrow eyebrow-marker animate-rise">Plan stratégique 2026 – 2035</p>
         <h1 className="mt-6 max-w-4xl text-[2.6rem] font-medium leading-[1.02] text-shadow-soft sm:text-6xl lg:text-7xl xl:text-8xl">
-          <span key={i} className="block text-ember animate-word-in">{words[i]}</span>
+          <span key={i} className="block text-leaf-light animate-word-in">{words[i]}</span>
           <span className="mt-2 block text-2xl leading-snug sm:text-4xl lg:text-5xl">
             pour une économie régénérative au service de la nature et des communautés
           </span>
@@ -74,9 +73,9 @@ function StatsBand() {
     <section className="bg-forest-deep text-forest-foreground">
       <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 sm:grid-cols-3 lg:grid-cols-5 lg:px-8">
         {stats.map((s, idx) => (
-          <div key={s.label} className={`border-l-2 border-leaf pl-4 ${idx === 4 ? "col-span-2 sm:col-span-1" : ""}`}>
+          <div key={s.label} className={`border-l-2 border-leaf-light pl-4 ${idx === 4 ? "col-span-2 sm:col-span-1" : ""}`}>
             <dt className="sr-only">{s.label}</dt>
-            <dd className="font-display text-3xl font-medium sm:text-4xl">{s.value}</dd>
+            <dd className="font-display text-3xl font-medium text-leaf-light sm:text-4xl">{s.value}</dd>
             <dd className="mt-1 text-sm text-forest-foreground/70">{s.label}</dd>
           </div>
         ))}
@@ -91,12 +90,12 @@ function Impact() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <div>
-            <p className="eyebrow text-forest">Notre impact</p>
+            <p className="eyebrow text-leaf">Notre impact</p>
             <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">
               Plus de 20 ans au service des aires protégées du Cameroun
             </h2>
           </div>
-          <p className="text-lg leading-relaxed text-muted-foreground">
+          <p className="text-base leading-relaxed text-muted-foreground">
             Issue du Plan de Gestion Environnementale du Pipeline Tchad-Cameroun, la FEDEC gère des fonds de compensation
             pour la biodiversité et accompagne les peuples autochtones vulnérables le long de l’axe Kribi – Bipindi – Lolodorf.
           </p>
@@ -107,7 +106,7 @@ function Impact() {
               <img src={h.image} alt="" loading="lazy" width={800} height={1000} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-card-overlay" />
               <div className="absolute inset-x-0 bottom-0 p-6">
-                <p className="font-display text-5xl font-medium text-ember lg:text-6xl">{h.value}</p>
+                <p className="font-display text-5xl font-medium text-leaf-light lg:text-6xl">{h.value}</p>
                 <p className="mt-2 max-w-xs text-base">{h.label}</p>
               </div>
             </div>
@@ -124,10 +123,10 @@ function PillarTabs() {
   return (
     <section className="bg-secondary py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <p className="eyebrow text-forest">Nos trois piliers stratégiques</p>
+        <p className="eyebrow text-leaf">Nos trois piliers stratégiques</p>
         <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">
           Agir pour{" "}
-          <span className="text-forest underline decoration-ember decoration-4 underline-offset-8">{p.tab}</span>
+          <span className="text-forest underline decoration-leaf decoration-4 underline-offset-8">{p.tab}</span>
         </h2>
         <div className="mt-8 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none]" role="tablist">
           {pillars.map((pl, idx) => (
@@ -147,11 +146,11 @@ function PillarTabs() {
         <div key={p.key} className="mt-10 grid gap-10 animate-rise lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden bg-forest-deep">
             <img src={p.image} alt="" loading="lazy" width={1000} height={750} className="h-full w-full object-cover" />
-            <span className="absolute left-0 top-0 bg-ember px-4 py-2 font-display text-2xl text-ember-foreground">{p.number}</span>
+            <span className="absolute left-0 top-0 bg-leaf px-4 py-2 font-display text-2xl text-forest-foreground">{p.number}</span>
           </div>
           <div>
             <h3 className="text-2xl font-medium leading-snug md:text-3xl">{p.title}</h3>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{p.text}</p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">{p.text}</p>
             <ul className="mt-6 space-y-3">
               {p.actions.map((a) => (
                 <li key={a} className="flex gap-3">
@@ -172,17 +171,17 @@ function PillarTabs() {
 
 function Goals() {
   return (
-    <section className="relative overflow-hidden bg-forest text-forest-foreground">
+    <section className="relative overflow-hidden bg-forest-deep text-forest-foreground">
       <img src={images.mangrove} alt="" loading="lazy" width={1200} height={800} className="absolute inset-0 h-full w-full object-cover opacity-20" />
       <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="max-w-2xl">
-          <p className="eyebrow text-leaf">Horizon 2035</p>
+          <p className="eyebrow text-leaf-light">Horizon 2035</p>
           <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">Des objectifs à la hauteur des enjeux</h2>
         </div>
         <dl className="mt-12 grid grid-cols-2 gap-px bg-forest-foreground/15 md:grid-cols-3">
           {goals2035.map((g) => (
-            <div key={g.label} className="bg-forest p-5 sm:p-8">
-              <dt className="font-display text-3xl font-medium text-ember sm:text-5xl">{g.value}</dt>
+            <div key={g.label} className="bg-forest-deep p-5 sm:p-8">
+              <dt className="font-display text-3xl font-medium text-leaf-light sm:text-5xl">{g.value}</dt>
               <dd className="mt-2 text-sm text-forest-foreground/80 sm:text-base">{g.label}</dd>
             </div>
           ))}
@@ -203,7 +202,7 @@ function ProjectsCarousel() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="eyebrow text-forest">Nos projets</p>
+            <p className="eyebrow text-leaf">Nos projets</p>
             <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">Sur le terrain, avec les communautés</h2>
           </div>
           <div className="flex gap-2">
@@ -236,10 +235,10 @@ function Director() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-[2fr_3fr] md:items-center lg:gap-16 lg:px-8 lg:py-24">
         <div className="relative mx-auto w-full max-w-sm md:max-w-none">
           <img src={images.dg} alt="Anne Virginie EDOA, Directeur Exécutif de la FEDEC" loading="lazy" width={700} height={794} className="aspect-[7/8] w-full object-cover shadow-card" />
-          <span className="absolute -bottom-4 -right-4 hidden h-24 w-24 bg-ember sm:block" aria-hidden />
+          <span className="absolute -bottom-4 -right-4 hidden h-24 w-24 bg-leaf sm:block" aria-hidden />
         </div>
         <div>
-          <Quote className="h-10 w-10 text-ember" />
+          <Quote className="h-10 w-10 text-leaf" />
           <blockquote className="mt-4 font-display text-2xl leading-snug sm:text-3xl">
             La FEDEC est une organisation en perpétuelle transformation. Après plus de 19 années d’engagement sur le terrain,
             nous aspirons maintenant à partager notre expertise en gestion et suivi des fonds de compensation.
@@ -266,7 +265,7 @@ function LatestNews() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="eyebrow text-forest">Actu FEDEC</p>
+            <p className="eyebrow text-leaf">Actu FEDEC</p>
             <h2 className="mt-3 text-4xl font-medium leading-tight md:text-5xl">Dernières nouvelles</h2>
           </div>
           <Button asChild variant="outline-forest" size="lg">
@@ -295,7 +294,6 @@ function Home() {
       <Director />
       <LatestNews />
       <Partners />
-      <Newsletter />
     </>
   );
 }
