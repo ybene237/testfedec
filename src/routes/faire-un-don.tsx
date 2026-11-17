@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Heart, Sprout, TreePine } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { images, ORG } from "@/lib/site-data";
+import { DONATION_AMOUNTS, formatFcfa as fcfa, images, ORG } from "@/lib/site-data";
 
 export const Route = createFileRoute("/faire-un-don")({
   head: () => ({
@@ -21,8 +21,6 @@ export const Route = createFileRoute("/faire-un-don")({
   component: DonatePage,
 });
 
-export const DONATION_AMOUNTS = [5000, 10000, 25000, 50000];
-const fcfa = (n: number) => `${n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ")} FCFA`;
 
 const uses = [
   { Icon: TreePine, title: "Protéger", text: "Appui aux éco-gardiens et au suivi écologique des parcs nationaux." },

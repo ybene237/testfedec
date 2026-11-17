@@ -32,4 +32,5 @@ use the editor.
 ## Project rules
 - Site content (projects, stats, pillars, news) lives in `src/lib/site-data.ts`; pages read from it so copy changes happen in one place.
 - Shared site chrome (header, footer, floating donate tab, toaster) is mounted in `src/routes/__root.tsx`; pages render only their own sections.
-- Brand colors are semantic tokens (`forest`, `forest-deep`, `ember`, `leaf`) in `src/styles.css`, with button variants `donate`, `frame`, `forest`, `outline-forest`; never hardcode colors in components.
+- Brand colors are semantic tokens (`forest`, `forest-deep`, `ember`, `leaf`, `sky`) in `src/styles.css`, with button variants `donate`, `frame`, `forest`, `outline-forest`; never hardcode colors in components.
+- Remote photos from fedec.cm are stored as lovable-assets pointers in `src/assets/fedec/*.asset.json` and used via their `.url`; generated photos stay as local `src/assets/*.jpg` imports.

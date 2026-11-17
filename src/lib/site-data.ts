@@ -414,3 +414,8 @@ export const commitments = [
   { title: "Transparence", text: "Toute l’information nécessaire sur la gestion des fonds est mise à disposition." },
   { title: "Sécurité", text: "Des fonds sécurisés pour que les résultats attendus soient livrés dans les délais." },
 ];
+
+/** Preset donation amounts, in FCFA. */
+export const DONATION_AMOUNTS = [5000, 10000, 25000, 50000];
+
+export const formatFcfa = (n: number) => `${n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ")} FCFA`;
